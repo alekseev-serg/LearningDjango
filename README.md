@@ -1,0 +1,1 @@
+It's a django training project.

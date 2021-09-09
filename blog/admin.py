@@ -14,7 +14,7 @@ class PostAdmin(admin.ModelAdmin):
     search_fields = ('title',)
     list_filter = ('tags',)
     readonly_fields = ('created', 'get_photo')
-    fields = ('title', 'slug', 'tags', 'content', 'photo', 'get_photo', 'created')
+    fields = ('title', 'slug', 'tags', 'content', 'photo', 'get_photo', 'created', 'author')
 
     def get_photo(self, obj):
         if obj.photo:

@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    Blog
+    {{ title }}
 {% endblock %}
 
 {% block content %}
     <h1 class="text-center mb-3">Полезные статьи</h1>
-    {% for post in posts %}
+    {% for post in object_list %}
         <div class="card mb-4">
             <div class="card-header">
                 Автор: {{ post.author }}, {{ post.created|date:"Y-m-d H:i:s" }}
@@ -24,9 +24,10 @@
                 </div>
             </div>
             <div class="card-footer text-muted">
-                <a href="#" class="btn btn-primary me-3">Читать</a>
+                <a href="{{ post.get_absolute_url }}" class="btn btn-primary me-3">Читать</a>
+                Tags:
                 {% for tag in post.tags.all %}
-                    <a href="#" class="link-secondary">{{ tag }}</a>,
+                    <a href="{{ tag.get_absolute_url }}" class="link-secondary">{{ tag }}</a>
                 {% endfor %}
             </div>
         </div>

@@ -31,7 +31,7 @@ class Post(models.Model):
     title = models.CharField(max_length=255)
     created = models.DateTimeField(auto_now_add=True, verbose_name='Опубликовано')
     content = models.TextField(blank=True)
-    author = models.CharField(max_length=100)
+    author = models.CharField(max_length=100, default='admin')
     slug = models.SlugField(max_length=255, verbose_name='url', unique=True)
     photo = models.ImageField(upload_to='photos/%Y/%m/%d', blank=True)
     tags = models.ManyToManyField(Tag, blank=True, related_name='posts')

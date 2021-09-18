@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView
 from .models import Post, Tag
 from .forms import NewPost
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
@@ -44,6 +45,7 @@ class PostByTag(ListView):
         return context
 
 
+@login_required
 def new_post(request):
     if request.method == 'POST':
         form = NewPost(request.POST, request.FILES)

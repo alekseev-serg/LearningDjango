@@ -34,7 +34,9 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="{% url 'index_blog' %}">Читать статьи</a></li>
-                            <li><a class="dropdown-item" href="{% url 'new_post' %}">Добавить статью</a></li>
+                            {% if user.is_authenticated %}
+                                <li><a class="dropdown-item" href="{% url 'new_post' %}">Добавить статью</a></li>
+                            {% endif %}
                         </ul>
                     </li>
 

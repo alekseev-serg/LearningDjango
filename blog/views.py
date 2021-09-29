@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import ListView, DetailView
 from .models import Post, Tag
 from .forms import NewPost
@@ -46,7 +46,7 @@ class PostByTag(ListView):
 
 
 @login_required
-def new_post(request):
+def post_new(request):
     if request.method == 'POST':
         form = NewPost(request.POST, request.FILES)
         if form.is_valid():
@@ -55,3 +55,29 @@ def new_post(request):
     else:
         form = NewPost()
     return render(request, 'blog/post_add.html', {'form': form})
+
+
+@login_required
+def post_edit(request, slug):
+    post = Post.objects.get(slug__iexact=slug)
+    if request.method == 'POST':
+        form = NewPost(request.POST, request.FILES, instance=post)
+        if form.is_valid():
+            post = form.save()
+            return redirect('post_detail', slug=slug)
+    else:
+        form = NewPost(instance=post)
+    return render(request, 'blog/post_edit.html', {'form': form, 'post': post})
+
+
+@login_required
+def try_to_delete(request, slug):
+    post = get_object_or_404(Post, slug=slug)
+    return render(request, 'blog/post_delete.html', {'post': post})
+
+
+@login_required
+def post_delete(request, slug):
+    post = get_object_or_404(Post, slug=slug)
+    post.delete()
+    return redirect('index_blog')

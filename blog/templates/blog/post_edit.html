@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Добавить новость
+{% endblock %}
+
+{% block page_title %}
+    Добавить пост:
+{% endblock %}
+
+{% block content %}
+    <form action="{% url 'post_edit' slug=post.slug %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <div class="mb-3">
+            {% if user.is_authenticated %}
+                <button type="submit" class="btn btn-success">Подтвердить</button>
+            {% endif %}
+            <a href="{% url 'post_detail' slug=post.slug %}" class="btn btn-primary">Назад</a>
+        </div>
+    </form>
+{% endblock %}

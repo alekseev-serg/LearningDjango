@@ -9,8 +9,10 @@
 {% endblock %}
 
 {% block content %}
+    <a class="btn btn-primary" href="{% url 'home' %}">Назад</a>
+    <a class="btn btn-primary" href="{% url 'post_new' %}">Добавить статью</a>
     {% for post in object_list %}
-        <div class="card mb-4">
+        <div class="card mt-4 mb-4">
             <div class="card-header">
                 Автор: {{ post.author }}, {{ post.created|date:"Y-m-d H:i:s" }}
             </div>

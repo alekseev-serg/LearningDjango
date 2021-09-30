@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    To-Do List
+{% endblock %}
+
+{% block page_title %}
+    To-Do List
+{% endblock %}
+
+{% block content %}
+    <a class="btn btn-primary" href="{% url 'home' %}">Назад</a>
+    <a class="btn btn-success" href="{% url 'done_list' %}">Выполненные задачи</a>
+    <form method="post" class="mt-4">
+        {% csrf_token %}
+        {{ form.title }}
+
+        <input type="submit" name="AddTask" class="btn btn-info mt-3 w-100" value="Add Task">
+    </form>
+    {% for task in tasks %}
+        <div class="item-row mt-3">
+            <a class="btn btn btn-info" href="{% url 'done' pk=task.pk %}">Done</a>
+            <a class="btn btn btn-info me-3" href="{% url 'edit' pk=task.pk %}">Edit</a>
+            <span class="">{{ task }}</span>
+        </div>
+    {% endfor %}
+{% endblock %}

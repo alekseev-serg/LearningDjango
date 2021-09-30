@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Done Tasks
+{% endblock %}
+
+{% block page_title %}
+    This tasks is DONE!
+{% endblock %}
+
+{% block content %}
+    <a class="btn btn-primary" href="{% url 'todolist' %}">Назад</a>
+    {% for task in tasks %}
+        <div class="item-row mt-3">
+            <div class="w-100 d-inline-flex justify-content-between">
+                <div class="left align-middle">
+                    <strike class="me-3">{{ task }}</strike>
+                    <a class="btn btn btn-info" href="{% url 'recover' pk=task.pk %}">Recovery</a>
+                </div>
+                <div class="right">
+                    <a href="{% url 'delete' pk=task.pk %}" class="btn btn-danger">Delete</a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

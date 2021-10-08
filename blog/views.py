@@ -1,7 +1,8 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404, HttpResponseRedirect, reverse
 from django.views.generic import ListView, DetailView
+from django.contrib import messages
 from .models import Post, Tag
-from .forms import NewPost
+from .forms import NewPost, TagForm
 from django.contrib.auth.decorators import login_required
 
 
@@ -33,7 +34,7 @@ class PostDetail(DetailView):
 
 class PostByTag(ListView):
     model = Post
-    template_name = 'blog/post_list.html'
+    template_name = 'blog/posts_by_tag.html'
     paginate_by = 10
 
     def get_queryset(self):
@@ -81,3 +82,19 @@ def post_delete(request, slug):
     post = get_object_or_404(Post, slug=slug)
     post.delete()
     return redirect('index_blog')
+
+
+@login_required
+def tag_new(request):
+    tags = Tag.objects.all()
+    if request.method == 'POST':
+        form = TagForm(request.POST)
+        if form.is_valid():
+            tag = form.save()
+            messages.success(request, 'Тэг "{}" успешно создан'.format(tag.title))
+            return redirect('tag_new')
+        else:
+            messages.error(request, 'Тэг с таким названием уже существует')
+    else:
+        form = TagForm()
+    return render(request, 'blog/tag_add.html', {'form': form, 'tags': tags})

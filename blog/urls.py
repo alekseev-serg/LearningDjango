@@ -9,5 +9,6 @@ urlpatterns = [
     path('blog/<str:slug>/edit/', post_edit, name='post_edit'),
     path('blog/<str:slug>/try_to_delete/', try_to_delete, name='try_to_delete'),
     path('blog/<str:slug>/delete/', post_delete, name='post_delete'),
+    path('blog/tags/create/', tag_new, name='tag_new'),
     path('blog/tag/<str:slug>/', PostByTag.as_view(), name='tag'),
 ]

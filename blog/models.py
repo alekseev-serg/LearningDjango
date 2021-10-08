@@ -14,13 +14,18 @@ Tag - title, slug
 """
 
 
+def tag_gen_slug(s):
+    new_slug = slugify(s)
+    return new_slug
+
+
 def gen_slug(s):
     new_slug = slugify(s)
-    return new_slug + '-' + str(int(time() / 3240000))
+    return new_slug + '-' + str(int(time()))
 
 
 class Tag(models.Model):
-    title = models.CharField(max_length=255)
+    title = models.CharField(max_length=255, unique=True)
     slug = models.SlugField(max_length=255, verbose_name='url', unique=True)
 
     def __str__(self):
@@ -28,6 +33,11 @@ class Tag(models.Model):
 
     def get_absolute_url(self):
         return reverse('tag', kwargs={"slug": self.slug})
+
+    def save(self, *args, **kwargs):
+        if not self.id:
+            self.slug = tag_gen_slug(self.title)
+        super().save(*args, **kwargs)
 
     class Meta:
         verbose_name = 'Тэг'

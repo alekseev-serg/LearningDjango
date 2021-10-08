@@ -9,10 +9,9 @@
 {% endblock %}
 
 {% block content %}
-    <a class="btn btn-primary" href="{% url 'home' %}">Назад</a>
+    <a class="btn btn-primary" href="{% url 'index_blog' %}">Назад</a>
     {% if user.is_authenticated %}
         <a class="btn btn-primary" href="{% url 'post_new' %}">Добавить статью</a>
-        <a class="btn btn-primary" href="{% url 'tag_new' %}">Добавить тэг</a>
     {% endif %}
 
     {% for post in object_list %}

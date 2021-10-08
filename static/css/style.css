@@ -1,0 +1,21 @@
+.leftimg {
+    float: left;
+    margin: 0 20px 0 0;
+}
+
+.item-row {
+    background-color: #ab75e3;
+    padding: 16px;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 16px;
+    box-shadow: 0 -1px 10px -4px rgba(0, 0, 0, 0.75);
+}
+
+.tags p {
+    background: #40c4ff none repeat scroll 0 0;
+    border-radius: 5px;
+    display: inline-block;
+    margin-right: 4px;
+}
+

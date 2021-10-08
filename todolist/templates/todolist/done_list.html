@@ -15,10 +15,14 @@
             <div class="w-100 d-inline-flex justify-content-between">
                 <div class="left align-middle">
                     <strike class="me-3">{{ task }}</strike>
-                    <a class="btn btn btn-info" href="{% url 'recover' pk=task.pk %}">Recovery</a>
+                    {% if user.is_authenticated %}
+                        <a class="btn btn btn-info" href="{% url 'recover' pk=task.pk %}">Recovery</a>
+                    {% endif %}
                 </div>
                 <div class="right">
-                    <a href="{% url 'delete' pk=task.pk %}" class="btn btn-danger">Delete</a>
+                    {% if user.is_authenticated %}
+                        <a href="{% url 'delete' pk=task.pk %}" class="btn btn-danger">Delete</a>
+                    {% endif %}
                 </div>
             </div>
         </div>

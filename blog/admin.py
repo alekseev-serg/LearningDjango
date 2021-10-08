@@ -5,6 +5,7 @@ from .models import *
 
 class TagAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("title",)}
+    list_display = ('title', 'slug',)
 
 
 class PostAdmin(admin.ModelAdmin):

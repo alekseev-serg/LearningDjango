@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
 from .models import Task
 from .forms import TaskForm
 
@@ -17,6 +18,7 @@ def todolist(request):
                                                       'form': form, })
 
 
+@login_required
 def edit_task(request, pk):
     task = Task.objects.get(pk=pk)
     form = TaskForm(instance=task)
@@ -34,6 +36,7 @@ def done_list(request):
     return render(request, 'todolist/done_list.html', {'tasks': tasks})
 
 
+@login_required
 def done_task(request, pk):
     task = Task.objects.get(pk=pk)
     task.completed = True
@@ -41,6 +44,7 @@ def done_task(request, pk):
     return redirect('todolist')
 
 
+@login_required
 def recover_task(request, pk):
     task = Task.objects.get(pk=pk)
     task.completed = False
@@ -48,6 +52,7 @@ def recover_task(request, pk):
     return redirect('todolist')
 
 
+@login_required
 def delete_task(request, pk):
     task = Task.objects.get(pk=pk)
     task.delete()

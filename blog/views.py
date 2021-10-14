@@ -1,9 +1,12 @@
-from django.shortcuts import render, redirect, get_object_or_404, HttpResponseRedirect, reverse
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import ListView, DetailView
 from django.contrib import messages
-from .models import Post, Tag
-from .forms import NewPost, TagForm
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import login, logout
+from django.db.models import F
+
+from .models import Post, Tag
+from .forms import NewPost, TagForm, UserLoginForm
 
 
 # Create your views here.
@@ -18,7 +21,6 @@ class IndexPostList(ListView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'Blog'
         return context
 
 
@@ -29,6 +31,9 @@ class PostDetail(DetailView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
+        self.object.views = F('views') + 1
+        self.object.save()
+        self.object.refresh_from_db()
         return context
 
 
@@ -51,7 +56,7 @@ def post_new(request):
     if request.method == 'POST':
         form = NewPost(request.POST, request.FILES)
         if form.is_valid():
-            post = form.save()
+            form.save()
             return redirect('index_blog')
     else:
         form = NewPost()
@@ -64,7 +69,7 @@ def post_edit(request, slug):
     if request.method == 'POST':
         form = NewPost(request.POST, request.FILES, instance=post)
         if form.is_valid():
-            post = form.save()
+            form.save()
             return redirect('post_detail', slug=slug)
     else:
         form = NewPost(instance=post)
@@ -98,3 +103,20 @@ def tag_new(request):
     else:
         form = TagForm()
     return render(request, 'blog/tag_add.html', {'form': form, 'tags': tags})
+
+
+def user_login(request):
+    if request.method == 'POST':
+        form = UserLoginForm(data=request.POST)
+        if form.is_valid():
+            user = form.get_user()
+            login(request, user)
+            return redirect('home')
+    else:
+        form = UserLoginForm()
+    return render(request, 'blog/login_page.html', {'form': form})
+
+
+def user_logout(request):
+    logout(request)
+    return redirect('home')

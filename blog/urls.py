@@ -1,9 +1,11 @@
-from django.urls import path
+from django.urls import path, include
 from blog.views import *
 
 urlpatterns = [
     path('', base_page, name='home'),
     path('blog/', IndexPostList.as_view(), name='index_blog'),
+    path('login/', user_login, name='login'),
+    path('logout/', user_logout, name='logout'),
     path('blog/post_new/', post_new, name='post_new'),
     path('blog/<str:slug>/', PostDetail.as_view(), name='post_detail'),
     path('blog/<str:slug>/edit/', post_edit, name='post_edit'),

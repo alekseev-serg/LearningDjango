@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Авторизация
+{% endblock %}
+
+{% block login %}
+    <div class="row justify-content-center">
+        <h1 class="mt-5 text-center">Авторизация:</h1>
+
+        <form method="post" class="w-25 mt-3">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-success">Login</button>
+                <a href="{% url 'home' %}" class="btn btn-dark">Back</a>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}
+
+{% block sidebar %}
+
+{% endblock %}
+
+{% block content %}
+
+{% endblock %}

@@ -8,18 +8,14 @@
     {{ post.title }}
 {% endblock %}
 
-{% block content %}
+{% block data %}
     <div class="card m-2">
         <div class="card-header">
             Автор: {{ post.author }}, {{ post.created|date:"Y-m-d H:i:s" }}
         </div>
         <div class="card-body">
 
-            {% if post.photo %}
-                <img src="{{ post.photo.url }}" alt="" width="250" height="250" class="leftimg">
-            {% endif %}
-
-            <p class="card-text text-center">Вы уверены, что хотите удалить данный пост?</p>
+             <p class="card-text text-center">Вы уверены, что хотите удалить данный пост?</p>
 
         </div>
         <div class="card-footer text-muted">

@@ -8,7 +8,7 @@
     {{ task.title }}
 {% endblock %}
 
-{% block content %}
+{% block data %}
     <a class="btn btn-primary" href="{% url 'todolist' %}">Назад</a>
     <form action="" method="post" class="item-row mt-4">
         {% csrf_token %}

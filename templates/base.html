@@ -17,96 +17,30 @@
 
 <body>
 <div class="container">
+    {% include 'inc/header.html' %}
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
-                    </li>
-
-                    <li class="nav-item dropdown mx-3">
-                        <a class="nav-link dropdown-toggle active" href="" id="navbarDropdown" role="button"
-                           data-bs-toggle="dropdown" aria-expanded="false">
-                            Полезные статьи
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="{% url 'index_blog' %}">Читать статьи</a></li>
-                            {% if user.is_authenticated %}
-                                <li><a class="dropdown-item" href="{% url 'post_new' %}">Добавить статью</a></li>
-                            {% endif %}
-                        </ul>
-                    </li>
-
-                </ul>
-
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-
-                {% if user.is_authenticated %}
-                    <ul class="navbar-nav mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/admin">Админка</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/admin/logout">(Выход)</a>
-                        </li>
-                    </ul>
-                {% else %}
-                    <ul class="navbar-nav mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/admin">Login</a>
-                        </li>
-                    </ul>
-                {% endif %}
-
-            </div>
-        </div>
-    </nav>
+    {% block login %}{% endblock %}
 
     <div class="row mt-5">
-        <div class="col-md-2">
-            <ul class="list-group">
-                <li class="list-group-item">
-                    <a class="link-dark text-decoration-none" href="{% url 'index_blog' %}">Полезные статьи</a>
-                </li>
-                <li class="list-group-item">
-                    <a class="link-dark text-decoration-none" href="{% url 'todolist' %}">To-Do List</a>
-                </li>
-                <li class="list-group-item">
-                    <a class="link-dark text-decoration-none" href="/blog">Утила 2</a>
-                </li>
-                <li class="list-group-item">
-                    <a class="link-dark text-decoration-none" href="/blog">Утила 3</a>
-                </li>
-            </ul>
-        </div>
-        <div class="col-md-10 border p-3">
-            <h1 class="text-center mb-3">
-                {% block page_title %}
+        {% block sidebar %}
+            {% include 'inc/sidebar.html' %}
+        {% endblock %}
 
+        {% block content %}
+            <div class="col-md-10 p-3 border">
+                <h1 class="text-center mb-3">
+                    {% block page_title %}
+
+                    {% endblock %}
+                </h1>
+                {% block data %}
+                
                 {% endblock %}
-            </h1>
-
-            {% block content %}
-
-            {% endblock %}
-
-        </div>
+            </div>
+        {% endblock %}
     </div>
-
 </div>
 
-<script>
-    setTimeout(function () {
-        if ($('#msg').length > 0){
-            $('#msg').remove();
-        }
-    }, 2000)
-</script>
 
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
@@ -115,7 +49,5 @@
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
         crossorigin="anonymous"></script>
 <script src="{% static 'bootstrap/js/bootstrap.js' %}"></script>
-
 </body>
-
 </html>

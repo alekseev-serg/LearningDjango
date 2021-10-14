@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    Добавить новость
+    Edit ::: {{ post.title }}
 {% endblock %}
 
 {% block page_title %}
     Добавить пост:
 {% endblock %}
 
-{% block content %}
+{% block data %}
     <form action="{% url 'post_edit' slug=post.slug %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
 

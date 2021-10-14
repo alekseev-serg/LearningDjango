@@ -10,7 +10,7 @@ class TagAdmin(admin.ModelAdmin):
 
 class PostAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("title",)}
-    list_display = ('id', 'title', 'slug', 'created', 'get_photo')
+    list_display = ('id', 'title', 'slug', 'created', 'get_photo', 'views')
     list_display_links = ('title',)
     search_fields = ('title',)
     list_filter = ('tags',)

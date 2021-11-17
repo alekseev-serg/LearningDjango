@@ -19,7 +19,7 @@ from django.conf.urls.static import static
 from django.conf import settings
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('godmodeon/', admin.site.urls),
     path('', include('blog.urls')),
     path('todolist/', include('todolist.urls')),
 ]

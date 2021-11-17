@@ -13,6 +13,9 @@ from .forms import NewPost, TagForm, UserLoginForm
 def base_page(request):
     return render(request, 'blog/main.html')
 
+def about(request):
+    return render(request, 'blog/about.html')
+
 
 class IndexPostList(ListView):
     model = Post

@@ -3,6 +3,7 @@ from blog.views import *
 
 urlpatterns = [
     path('', base_page, name='home'),
+    path('about/', about, name='about'),
     path('blog/', IndexPostList.as_view(), name='index_blog'),
     path('login/', user_login, name='login'),
     path('logout/', user_logout, name='logout'),

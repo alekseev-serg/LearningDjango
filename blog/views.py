@@ -3,7 +3,8 @@ from django.views.generic import ListView, DetailView
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, logout
-from django.db.models import F
+from django.db.models import F, Q
+from django.utils import timezone
 
 from .models import Post, Tag
 from .forms import NewPost, TagForm, UserLoginForm
@@ -13,18 +14,32 @@ from .forms import NewPost, TagForm, UserLoginForm
 def base_page(request):
     return render(request, 'blog/main.html')
 
+
 def about(request):
     return render(request, 'blog/about.html')
 
 
-class IndexPostList(ListView):
-    model = Post
-    template_name = 'blog/post_list.html'
-    paginate_by = 10
+def index_post_list(request):
+    search_query = request.GET.get('search', '')
+    if search_query:
+        posts = Post.objects.filter(Q(title__icontains=search_query) | Q(content__icontains=search_query))
+        btn = False
+    else:
+        posts = Post.objects.filter(created__lte=timezone.now()).order_by('-created')
+        btn = True
 
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super().get_context_data(**kwargs)
-        return context
+    context = {'posts': posts, 'btn': btn}
+    return render(request, 'blog/post_list.html', context)
+
+
+# class IndexPostList(ListView):
+#     model = Post
+#     template_name = 'blog/post_list.html'
+#     paginate_by = 10
+#
+#     def get_context_data(self, *, object_list=None, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         return context
 
 
 class PostDetail(DetailView):

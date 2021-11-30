@@ -11,12 +11,14 @@
 {% block data %}
     <a class="btn btn-dark" href="{% url 'home' %}">Назад</a>
     <a class="btn btn-success" href="{% url 'done_list' %}">Выполненные задачи</a>
-    <form method="post" class="mt-4">
-        {% csrf_token %}
-        {{ form.title }}
+    {% if user.is_authenticated %}
+        <form method="post" class="mt-4">
+            {% csrf_token %}
+            {{ form.title }}
 
-        <input type="submit" name="AddTask" class="btn btn-info mt-3 w-100" value="Add Task">
-    </form>
+            <input type="submit" name="AddTask" class="btn btn-info mt-3 w-100" value="Add Task">
+        </form>
+    {% endif %}
     {% for task in tasks %}
         <div class="item-row mt-3">
             {% if user.is_authenticated %}

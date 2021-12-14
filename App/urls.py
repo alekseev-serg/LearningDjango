@@ -20,8 +20,9 @@ from django.conf import settings
 
 urlpatterns = [
     path('godmodeon/', admin.site.urls),
-    path('', include('blog.urls')),
     path('todolist/', include('todolist.urls')),
+    path('ckeditor/', include('ckeditor_uploader.urls')),
+    path('', include('blog.urls')),
 ]
 
 if settings.DEBUG:

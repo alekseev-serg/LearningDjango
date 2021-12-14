@@ -4,6 +4,10 @@ from .models import Task
 from .forms import TaskForm
 
 
+def chemp(request):
+    return render(request, 'todolist/chemp.html')
+
+
 # Create your views here.
 def todolist(request):
     if request.method == 'POST':

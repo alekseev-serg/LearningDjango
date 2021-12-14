@@ -1,6 +1,16 @@
+from django import forms
 from django.contrib import admin
 from django.utils.safestring import mark_safe
 from .models import *
+from ckeditor_uploader.widgets import CKEditorUploadingWidget
+
+
+class PostAdminForm(forms.ModelForm):
+    content = forms.CharField(widget=CKEditorUploadingWidget())
+
+    class Meta:
+        model = Post
+        fields = '__all__'
 
 
 class TagAdmin(admin.ModelAdmin):
@@ -9,6 +19,7 @@ class TagAdmin(admin.ModelAdmin):
 
 
 class PostAdmin(admin.ModelAdmin):
+    form = PostAdminForm
     prepopulated_fields = {"slug": ("title",)}
     list_display = ('id', 'title', 'slug', 'created', 'get_photo', 'views')
     list_display_links = ('title',)

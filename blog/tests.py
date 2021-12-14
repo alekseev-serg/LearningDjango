@@ -1,11 +1,5 @@
-from django.test import TestCase
+test1 = ''
+test2 = ''
+string = "{text1|text2|text3} статичный текст {p1|p2|p3}"
 
-# Create your tests here.
-from pytils.translit import slugify
-
-
-s = 'Привет Мир'
-new_slug = slugify(s)
-
-print(new_slug)
-
+print(string.split(' '))

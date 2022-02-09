@@ -22,6 +22,7 @@ urlpatterns = [
     path('godmodeon/', admin.site.urls),
     path('todolist/', include('todolist.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
+    path('gallery/', include('gallery.urls')),
     path('', include('blog.urls')),
 ]
 

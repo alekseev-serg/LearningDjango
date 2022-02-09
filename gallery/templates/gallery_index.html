@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Галерея
+{% endblock %}
+
+{% block page_title %}
+    Галерея
+{% endblock %}
+
+{% block data %}
+    <a class="btn btn-dark" href="{% url 'home' %}">Назад</a><br>
+    {% if user.is_authenticated %}
+        <form action="{% url 'gallery' %}" method="post" class="mt-4" enctype="multipart/form-data">
+            <div class="input-group">
+                {% csrf_token %}
+                {{ form.images }}
+                <input type="submit" class="btn btn-outline-secondary" id="inputGroupFileAddon04" value="Upload"
+                       name="UploadPic">
+            </div>
+        </form>
+    {% endif %}
+
+    {% for pic in pictures %}
+        <img src="{{ pic.images.url }}" class="img-thumbnail mt-3" width="200" height="200" alt="">
+    {% endfor %}
+
+
+{% endblock %}

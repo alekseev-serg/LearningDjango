@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'todolist.apps.TodolistConfig',
     'ckeditor',
     'ckeditor_uploader',
+    'gallery.apps.GalleryConfig',
 ]
 
 MIDDLEWARE = [

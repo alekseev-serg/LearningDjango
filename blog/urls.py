@@ -1,8 +1,16 @@
 from django.urls import path, include
 from blog.views import *
+from .sitemap import StaticViewSitemap, DynamicViewSitemap
+from django.contrib.sitemaps.views import sitemap
+
+sitemaps = {
+    'static': StaticViewSitemap,
+    'dynamic': DynamicViewSitemap
+}
 
 urlpatterns = [
     path('', base_page, name='home'),
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}),
     path('about/', about, name='about'),
     path('blog/', index_post_list, name='index_blog'),
     path('login/', user_login, name='login'),

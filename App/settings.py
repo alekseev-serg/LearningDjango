@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'ckeditor',
     'ckeditor_uploader',
     'gallery.apps.GalleryConfig',
+    'django.contrib.sitemaps',
 ]
 
 MIDDLEWARE = [

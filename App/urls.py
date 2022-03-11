@@ -21,7 +21,7 @@ from django.views.generic.base import RedirectView, TemplateView
 from django.contrib.staticfiles.storage import staticfiles_storage
 
 urlpatterns = [
-    path('favicon.ico', RedirectView.as_view(url=staticfiles_storage.url("favicon.ico")), ),
+    path('favicon.ico', RedirectView.as_view(url=staticfiles_storage.url("favicon.ico"))),
     path('robots.txt', TemplateView.as_view(template_name='robot.txt', content_type='text/plain')),
     path('godmodeon/', admin.site.urls),
     path('todolist/', include('todolist.urls')),

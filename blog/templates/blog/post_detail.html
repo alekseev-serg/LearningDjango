@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block description %}
-    {{ post.title }}
+    {{ post.content|striptags|truncatewords:40 }}
 {% endblock %}
 
 {% block title %}

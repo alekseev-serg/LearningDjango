@@ -27,6 +27,7 @@ urlpatterns = [
     path('todolist/', include('todolist.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('gallery/', include('gallery.urls')),
+    path('news/', include('news.urls')),
     path('', include('blog.urls')),
 ]
 

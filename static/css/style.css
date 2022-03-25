@@ -19,15 +19,31 @@
     margin-right: 4px;
 }
 
-.name{
+.name {
     font-size: 25px;
     font-weight: bold;
 }
-.title-me{
+
+.title-me {
     font-size: 20px;
     font-weight: bold;
 }
 
-.mini-title{
+.mini-title {
     text-decoration: underline;
+}
+
+.media-body a:hover {
+    color: #4d9200 !important;
+}
+
+.navbar-nav .nav-item a:hover {
+    color: #4d9200 !important;
+}
+
+.sidebar{
+    margin-top: 85px;
+}
+.btn.btn-dark{
+    opacity: 0.75;
 }

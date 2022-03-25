@@ -1,26 +1,24 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-opacity-75">
     <div class="container-fluid">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
+                <li class="nav-item ms-3">
                     <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
                 </li>
-
-                <li class="nav-item dropdown mx-3">
-                    <a class="nav-link dropdown-toggle active" href="" id="navbarDropdown" role="button"
-                       data-bs-toggle="dropdown" aria-expanded="false">
-                        Blog
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="{% url 'index_blog' %}">Читать статьи</a></li>
-                        {% if user.is_authenticated %}
-                            <li><a class="dropdown-item" href="{% url 'post_new' %}">Добавить статью</a></li>
-                        {% endif %}
-                    </ul>
+                <li class="nav-item ms-3">
+                    <a class="nav-link active" aria-current="page" href="{% url 'todolist' %}">To-Do List</a>
                 </li>
-
-                <li class="nav-item">
+                <li class="nav-item ms-3">
+                    <a class="nav-link active" aria-current="page" href="{% url 'gallery' %}">Gallery</a>
+                </li>
+                <li class="nav-item ms-3">
+                    <a class="nav-link active" aria-current="page" href="#">Новости Python</a>
+                </li>
+                <li class="nav-item ms-3">
+                    <a class="nav-link active" aria-current="page" href="#">Источники</a>
+                </li>
+                <li class="nav-item ms-3">
                     <a class="nav-link active" aria-current="page" href="{% url 'about' %}">Обо мне</a>
                 </li>
             </ul>

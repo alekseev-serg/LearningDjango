@@ -9,7 +9,12 @@
 {% endblock %}
 
 {% block data %}
-    <a href="{% url 'index_blog' %}" class="btn btn-dark mb-3">Назад</a>
+    <div class="d-inline-flex justify-content-between w-100 mb-3">
+        <div class="left">
+            <a class="btn btn-dark" href="{% url 'home' %}">Назад</a>
+        </div>
+    </div>
+
     <form action="{% url 'post_new' %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
 

@@ -11,10 +11,6 @@ from .forms import NewPost, TagForm, UserLoginForm
 
 
 # Create your views here.
-def base_page(request):
-    return render(request, 'blog/main.html')
-
-
 def about(request):
     return render(request, 'blog/about.html')
 
@@ -31,15 +27,6 @@ def index_post_list(request):
     context = {'posts': posts, 'btn': btn}
     return render(request, 'blog/post_list.html', context)
 
-
-# class IndexPostList(ListView):
-#     model = Post
-#     template_name = 'blog/post_list.html'
-#     paginate_by = 10
-#
-#     def get_context_data(self, *, object_list=None, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         return context
 
 
 class PostDetail(DetailView):
@@ -75,7 +62,7 @@ def post_new(request):
         form = NewPost(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('index_blog')
+            return redirect('home')
     else:
         form = NewPost()
     return render(request, 'blog/post_add.html', {'form': form})
@@ -104,7 +91,7 @@ def try_to_delete(request, slug):
 def post_delete(request, slug):
     post = get_object_or_404(Post, slug=slug)
     post.delete()
-    return redirect('index_blog')
+    return redirect('home')
 
 
 @login_required

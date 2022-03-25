@@ -8,35 +8,40 @@
     About me...
 {% endblock %}
 
-{% block data %}
-    <img src="../../../media/img/me1.jpg" width="300" height="300" alt="me" class="leftimg">
-    <div class="full-name">
-        <span class="name">Алексеев Сергей</span>
-    </div>
+{% block page_title %}
+    About me...
+{% endblock %}
 
-    <div class="contact-info mb-3">
-        <span class="email">Email: <a href="">andactions@yandex.ru</a></span><br>
-        <span class="github">Github: <a
-                href="https://github.com/SuperSerg58">https://github.com/SuperSerg58</a></span><br>
-        <span class="insta">Instagram: <a href="https://www.instagram.com/alexeev_serg/">https://www.instagram.com/alexeev_serg/</a></span><br>
-    </div>
+{% block content %}
+    <div class="col-md-12 p-2">
+        <img src="../../../media/img/me1.jpg" width="300" height="300" alt="me" class="leftimg">
+        <div class="full-name">
+            <span class="name">Алексеев Сергей</span>
+        </div>
 
-    <div class="personal mb-3">
-        <span class="title-me">Личная информация:</span><br>
-        <span>Гражданство: Российская федерация</span><br>
-        <span>Дата рождения: 17 октрября 1986 (35 лет)</span><br>
-        <span>Город: Пенза</span><br>
-        <span>Образование: Высшее (техническое)</span><br><br>
-    </div>
-    <hr>
+        <div class="contact-info mb-3">
+            <span class="email">Email: <a href="">andactions@yandex.ru</a></span><br>
+            <span class="github">Github: <a
+                    href="https://github.com/SuperSerg58">https://github.com/SuperSerg58</a></span><br>
+            <span class="insta">Instagram: <a href="https://www.instagram.com/alexeev_serg/">https://www.instagram.com/alexeev_serg/</a></span><br>
+        </div>
 
-    <div class="exp">
-        <span class="title-me">Опыт работы:</span><br>
-        <div class="mkniu">
-            <span>Период работы: август 2009 - по настоящее время</span><br>
-            <span>Должность: Заместитель начальника отдела</span><br>
-            <span>Организация: МКНИУ ЦИАО ССГМ в г.Пензе</span><br>
-            <span>
+        <div class="personal mb-3">
+            <span class="title-me">Личная информация:</span><br>
+            <span>Гражданство: Российская федерация</span><br>
+            <span>Дата рождения: 17 октрября 1986 (35 лет)</span><br>
+            <span>Город: Пенза</span><br>
+            <span>Образование: Высшее (техническое)</span><br><br>
+        </div>
+        <hr>
+
+        <div class="exp">
+            <span class="title-me">Опыт работы:</span><br>
+            <div class="mkniu">
+                <span>Период работы: август 2009 - по настоящее время</span><br>
+                <span>Должность: Заместитель начальника отдела</span><br>
+                <span>Организация: МКНИУ ЦИАО ССГМ в г.Пензе</span><br>
+                <span>
             Должностные обязанности:
                 <ul>
                     <li>Организация работы сотрудников отдела по направлениям деятельности</li>
@@ -45,12 +50,12 @@
                     <li>Изучение технической документации</li>
                 </ul>
             </span>
-        </div>
-        <div class="tth mt-4">
-            <span>Период работы: октябрь 2008 - август 2009</span><br>
-            <span>Должность: Дизайнер-проектировщик</span><br>
-            <span>Организация: ООО "ТоргТехХолод"</span><br>
-            <span>
+            </div>
+            <div class="tth mt-4">
+                <span>Период работы: октябрь 2008 - август 2009</span><br>
+                <span>Должность: Дизайнер-проектировщик</span><br>
+                <span>Организация: ООО "ТоргТехХолод"</span><br>
+                <span>
             Должностные обязанности:
                 <ul>
                     <li>Проектирование торговых помещений</li>
@@ -58,38 +63,43 @@
                     <li>Подбор оборудования</li>
                 </ul>
             </span>
+            </div>
+            <div class="golden-line mt-4">
+                <span>Период работы: октябрь 2006 - июль 2007</span><br>
+                <span>Должность: оператор ПК</span><br>
+                <span>Организация: АО "Золотая-Линия"</span><br>
+
+                Должностные обязанности:
+                <ul>
+                    <li>Предоставление доступа в интернет поситителям интрнет-кафе</li>
+                    <li>Широкоформатная печеть</li>
+                    <li>Поиск информации в интернете</li>
+                </ul>
+            </div>
         </div>
-        <div class="golden-line mt-4">
-            <span>Период работы: октябрь 2006 - июль 2007</span><br>
-            <span>Должность: оператор ПК</span><br>
-            <span>Организация: АО "Золотая-Линия"</span><br>
+        <hr>
 
-            Должностные обязанности:
-            <ul>
-                <li>Предоставление доступа в интернет поситителям интрнет-кафе</li>
-                <li>Широкоформатная печеть</li>
-                <li>Поиск информации в интернете</li>
-            </ul>
+        <div class="learn mb-3">
+            <span class="title-me">Образование:</span><br>
+            <span>Учебное заведение: Пензенский государственный университет</span><br>
+            <span>Год окончания: 2008г.</span><br>
+            <span>Факультет: Институт систем управления и информационной безопасности</span><br>
+            <span>Специальность: Инженер</span><br>
+            <span>Форма обучения: Очная</span><br>
+        </div>
+        <hr>
+
+        <div class="advanced mb-3">
+            <span class="title-me">Дополнительная информация:</span><br>
+            <span>Иностранные языки: Английский A2 Pre-Intermediate</span><br>
+            <span>Наличие водительских прав: Категория B с 2006г.</span><br>
+            <span>Навыки: Python3, Django Framework ver.3, Bootstrap, HTML, Linux, парсинг, обработка данных.</span><br>
+            <span>Увлечения: Футбол, активный отдых, автомобили, походы, кино.</span><br>
+            <br>
         </div>
     </div>
-    <hr>
+{% endblock %}
 
-    <div class="learn mb-3">
-        <span class="title-me">Образование:</span><br>
-        <span>Учебное заведение: Пензенский государственный университет</span><br>
-        <span>Год окончания: 2008г.</span><br>
-        <span>Факультет: Институт систем управления и информационной безопасности</span><br>
-        <span>Специальность: Инженер</span><br>
-        <span>Форма обучения: Очная</span><br>
-    </div>
-    <hr>
+{% block sidebar %}
 
-    <div class="advanced mb-3">
-        <span class="title-me">Дополнительная информация:</span><br>
-        <span>Иностранные языки: Английский A2 Pre-Intermediate</span><br>
-        <span>Наличие водительских прав: Категория B с 2006г.</span><br>
-        <span>Навыки: Python3, Django Framework ver.3, Bootstrap, HTML, Linux, парсинг, обработка данных.</span><br>
-        <span>Увлечения: Футбол, активный отдых, автомобили, походы, кино.</span><br>
-        <br>
-    </div>
 {% endblock %}

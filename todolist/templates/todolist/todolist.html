@@ -9,8 +9,13 @@
 {% endblock %}
 
 {% block data %}
-    <a class="btn btn-dark" href="{% url 'home' %}">Назад</a>
-    <a class="btn btn-success" href="{% url 'done_list' %}">Выполненные задачи</a>
+    <div class="d-inline-flex justify-content-between w-100 mb-3">
+        <div class="left">
+            <a class="btn btn-dark" href="{% url 'home' %}">Назад</a>
+            <a class="btn btn-success" href="{% url 'done_list' %}">Выполненные задачи</a>
+        </div>
+    </div>
+
     {% if user.is_authenticated %}
         <form method="post" class="mt-4">
             {% csrf_token %}

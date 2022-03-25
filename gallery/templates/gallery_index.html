@@ -9,7 +9,12 @@
 {% endblock %}
 
 {% block data %}
-    <a class="btn btn-dark" href="{% url 'home' %}">Назад</a><br>
+    <div class="d-inline-flex justify-content-between w-100 mb-3">
+        <div class="left">
+            <a class="btn btn-dark" href="{% url 'home' %}">Назад</a><br>
+        </div>
+    </div>
+
     {% if user.is_authenticated %}
         <form action="{% url 'gallery' %}" method="post" class="mt-4" enctype="multipart/form-data">
             <div class="input-group">

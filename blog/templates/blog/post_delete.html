@@ -8,8 +8,14 @@
     {{ post.title }}
 {% endblock %}
 
-{% block data %}
-    <div class="card m-2">
+{% block content %}
+    <div class="d-inline-flex justify-content-between w-100 mb-3">
+        <div class="left">
+            <a class="btn btn-dark" href="{% url 'home' %}">Назад</a>
+        </div>
+    </div>
+
+    <div class="card mt-4">
         <div class="card-header">
             Автор: {{ post.author }}, {{ post.created|date:"Y-m-d H:i:s" }}
         </div>

@@ -9,6 +9,12 @@
 {% endblock %}
 
 {% block data %}
+    <div class="d-inline-flex justify-content-between w-100 mb-3">
+        <div class="left">
+            <a class="btn btn-dark" href="{% url 'home' %}">Назад</a>
+        </div>
+    </div>
+
     <form action="{% url 'post_edit' slug=post.slug %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
 
@@ -18,7 +24,6 @@
             {% if user.is_authenticated %}
                 <button type="submit" class="btn btn-success">Подтвердить</button>
             {% endif %}
-            <a href="{% url 'post_detail' slug=post.slug %}" class="btn btn-primary">Назад</a>
         </div>
     </form>
 {% endblock %}

@@ -9,10 +9,17 @@
 {% endblock %}
 
 {% block data %}
+    <div class="d-inline-flex justify-content-between w-100 mb-3">
+        <div class="left">
+            <a class="btn btn-dark" href="{% url 'home' %}">Назад</a>
+        </div>
+    </div>
+
     <div class="w-100">
         {% include 'blog/messages/messages.html' %}
     </div>
-    <form action="{% url 'tag_new' %}" method="post" class="mt-3">
+
+    <form action="{% url 'tag_new' %}" method="post" class="mt-4">
         {% csrf_token %}
 
         {% for field in form %}
@@ -21,9 +28,6 @@
 
         <div class="mt-3">
             <button type="submit" class="btn btn-success">Добавить тэг</button>
-            <a href="{% url 'index_blog' %}" class="btn btn-dark">
-                Назад
-            </a>
         </div>
     </form>
 

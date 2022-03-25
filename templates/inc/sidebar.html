@@ -1,13 +1,19 @@
-<div class="col-md-2">
-    <ul class="list-group">
+<div class="col-md-3">
+    <ul class="sidebar list-group text-center">
         <li class="list-group-item">
-            <a class="link-dark text-decoration-none" href="{% url 'index_blog' %}">Blog</a>
+            <a class="link-secondary text-decoration-none" href="{% url 'home' %}">Главная страница</a>
         </li>
         <li class="list-group-item">
-            <a class="link-dark text-decoration-none" href="{% url 'todolist' %}">To-Do List</a>
+            <a class="link-secondary text-decoration-none" href="{% url 'todolist' %}">Панель задач</a>
         </li>
         <li class="list-group-item">
-            <a class="link-dark text-decoration-none" href="{% url 'gallery' %}">Галерея</a>
+            <a class="link-secondary text-decoration-none" href="{% url 'gallery' %}">Галерея</a>
+        </li>
+        <li class="list-group-item">
+            <a class="link-secondary text-decoration-none" href="#">Новости Python</a>
+        </li>
+        <li class="list-group-item">
+            <a class="link-secondary text-decoration-none" href="#">Источники</a>
         </li>
         <li class="list-group-item">
             {% include 'inc/weather.html' %}

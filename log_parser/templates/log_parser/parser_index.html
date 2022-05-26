@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Обработка Логов
+{% endblock %}
+
+{% block page_title %}
+    Обработка Логов
+{% endblock %}
+
+{% block data %}
+    <div class="d-inline-flex justify-content-between w-100 mb-3">
+        <div class="left">
+            <a class="btn btn-dark" href="{% url 'home' %}">Назад</a><br>
+        </div>
+    </div>
+
+    {% if user.is_authenticated %}
+        <form action="{% url 'log_parser' %}" method="post" class="mt-4" enctype="multipart/form-data">
+            <div class="input-group">
+                {% csrf_token %}
+                {{ form.file }}
+                <input type="submit" class="btn btn-outline-secondary" id="inputGroupFileAddon04" value="Выполнить"
+                       name="UploadFile">
+            </div>
+        </form>
+    {% endif %}
+
+    {% if ips %}
+        <table class="table table-bordered mt-5">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>ip - адрес</th>
+                <th>Колличество вхождений</th>
+            </tr>
+            </thead>
+
+            {% for elem in ips %}
+                <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{ elem.ip }}</td>
+                    <td>{{ elem.frequency }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+
+
+{% endblock %}

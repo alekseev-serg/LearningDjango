@@ -16,5 +16,5 @@ def gallery_index(request):
     else:
         form = LoadForm()
     pictures = Pictures.objects.all()
-    return render(request, 'gallery_index.html', {'form': form,
+    return render(request, 'gallery/gallery_index.html', {'form': form,
                                                   'pictures': pictures})

@@ -28,6 +28,7 @@ urlpatterns = [
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('gallery/', include('gallery.urls')),
     path('news/', include('news.urls')),
+    path('log_parser/', include('log_parser.urls')),
     path('', include('blog.urls')),
 ]
 

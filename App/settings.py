@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'gallery.apps.GalleryConfig',
     'django.contrib.sitemaps',
     'news.apps.NewsConfig',
+    'log_parser.apps.LogParserConfig',
 ]
 
 MIDDLEWARE = [
